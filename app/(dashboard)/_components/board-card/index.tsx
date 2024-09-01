@@ -3,12 +3,16 @@
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import Overlay from "./overlay";
+import { MoreHorizontal } from "lucide-react";
 import { useAuth } from "@clerk/nextjs";
+
+import { useApiMutation } from "@/hooks/use-api-mutation";
+import { api } from "@/convex/_generated/api";
+import Overlay from "./overlay";
 import Footer from "./footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Actions } from "@/components/actions";
-import { MoreHorizontal } from "lucide-react";
+import { toast } from "sonner";
 
 interface BoardCardProps {
   id: string;
@@ -23,6 +27,24 @@ interface BoardCardProps {
 
 export const BoardCard = ({ ...props }: BoardCardProps) => {
   const { userId } = useAuth();
+  const { mutate: onFavorite, pending: pendingFavorite } = useApiMutation(
+    api.board.favorite
+  );
+  const { mutate: onUnfavorite, pending: pendingUnfavorite } = useApiMutation(
+    api.board.unfavorite
+  );
+
+  const toggleFavorite = () => {
+    if (props.isFavorite) {
+      onUnfavorite({ id: props.id }).catch(() =>
+        toast.error("Failed to unfavorite")
+      );
+    } else {
+      onFavorite({ id: props.id, orgId: props.orgId }).catch(() =>
+        toast.error("Failed to favorite ")
+      );
+    }
+  };
 
   const authorLabel = userId === props.authorId ? "You" : props.authorName;
   const createdAtLabel = formatDistanceToNow(props.createdAt, {
@@ -51,8 +73,8 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
           title={props.title}
           authorLabel={authorLabel}
           createdAtLabel={createdAtLabel}
-          disabled={false}
-          onClick={() => {}}
+          disabled={pendingFavorite || pendingUnfavorite}
+          onClick={toggleFavorite}
         />
       </div>
     </Link>
