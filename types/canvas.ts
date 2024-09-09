@@ -9,7 +9,7 @@ export type CanvasState =
         | LayerType.Text
         | LayerType.Square;
     }
-  | { mode: CanvasMode.Resizing; initalBounds: XYWH; corner: Side }
+  | { mode: CanvasMode.Resizing; initialBounds: XYWH; corner: Side }
   | { mode: CanvasMode.Translating; current: Point }
   | { mode: CanvasMode.SelectionNet; origin: Point; current?: Point }
   | { mode: CanvasMode.Pencil };
