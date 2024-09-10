@@ -15,7 +15,6 @@ export const Ellipse = ({
   selectionColor,
 }: EllipseProps) => {
   const { x, y, width, height, fill } = layer;
-  console.log({ x, y });
   return (
     <ellipse
       style={{
