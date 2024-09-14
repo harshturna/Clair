@@ -21,7 +21,6 @@ interface BoardCardProps {
   authorId: string;
   authorName: string;
   createdAt: number;
-  orgId: string;
   isFavorite: boolean;
 }
 
@@ -40,7 +39,7 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
         toast.error("Failed to unfavorite")
       );
     } else {
-      onFavorite({ id: props.id, orgId: props.orgId }).catch(() =>
+      onFavorite({ id: props.id }).catch(() =>
         toast.error("Failed to favorite ")
       );
     }

@@ -4,7 +4,6 @@ import { getAllOrThrow } from "convex-helpers/server/relationships";
 
 export const get = query({
   args: {
-    orgId: v.string(),
     search: v.optional(v.string()),
     favorites: v.optional(v.string()),
   },
@@ -18,9 +17,7 @@ export const get = query({
     if (args.favorites) {
       const favoriteBoards = await ctx.db
         .query("userFavorites")
-        .withIndex("by_user_org", (q) =>
-          q.eq("userId", identity.subject).eq("orgId", args.orgId)
-        )
+        .withIndex("by_user", (q) => q.eq("userId", identity.subject))
         .order("desc")
         .collect();
 
@@ -41,13 +38,13 @@ export const get = query({
       boards = await ctx.db
         .query("boards")
         .withSearchIndex("search_title", (q) =>
-          q.search("title", title).eq("orgId", args.orgId)
+          q.search("title", title).eq("authorId", identity.subject)
         )
         .collect();
     } else {
       boards = await ctx.db
         .query("boards")
-        .withIndex("by_org", (q) => q.eq("orgId", args.orgId))
+        .withIndex("by_author", (q) => q.eq("authorId", identity.subject))
         .order("desc")
         .collect();
     }

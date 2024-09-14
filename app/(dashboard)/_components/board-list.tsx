@@ -9,15 +9,14 @@ import { BoardCard } from "./board-card";
 import NewBoardButton from "./new-board-button";
 
 interface BoardListProps {
-  orgId: string;
   query: {
     search?: string;
     favorites?: string;
   };
 }
 
-const BoardList = ({ orgId, query }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { orgId, ...query });
+const BoardList = ({ query }: BoardListProps) => {
+  const data = useQuery(api.boards.get, { ...query });
 
   if (data === undefined) {
     return (
@@ -26,7 +25,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
           {query.favorites ? "Favorite boards" : "All boards"}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-8 pb-10 gap-5">
-          <NewBoardButton orgId={orgId} disabled />
+          <NewBoardButton disabled />
           <BoardCard.Skeleton />
           <BoardCard.Skeleton />
           <BoardCard.Skeleton />
@@ -54,7 +53,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
         {query.favorites ? "Favorite boards" : "All boards"}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-8 pb-10 gap-5">
-        <NewBoardButton orgId={orgId} />
+        <NewBoardButton />
         {data.map((board) => (
           <BoardCard
             key={board._id}
@@ -64,7 +63,6 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
             authorId={board.authorId}
             authorName={board.authorName}
             createdAt={board._creationTime}
-            orgId={board.orgId}
             isFavorite={board.isFavorite}
           />
         ))}
