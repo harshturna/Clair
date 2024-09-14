@@ -1,10 +1,24 @@
-import { authMiddleware } from "@clerk/nextjs";
+import {
+  convexAuthNextjsMiddleware,
+  createRouteMatcher,
+  isAuthenticatedNextjs,
+  nextjsMiddlewareRedirect,
+} from "@convex-dev/auth/nextjs/server";
 
-// This example protects all routes including api/trpc routes
-// Please edit this to allow other routes to be public as needed.
-// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
-export default authMiddleware({});
+const isSignInPage = createRouteMatcher(["/sign-in"]);
+const isProtectedRoute = createRouteMatcher(["/board(.*)", "/"]);
+
+export default convexAuthNextjsMiddleware((request) => {
+  if (isSignInPage(request) && isAuthenticatedNextjs()) {
+    return nextjsMiddlewareRedirect(request, "/board");
+  }
+  if (isProtectedRoute(request) && !isAuthenticatedNextjs()) {
+    return nextjsMiddlewareRedirect(request, "/sign-in");
+  }
+});
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  // The following matcher runs middleware on all routes
+  // except static assets.
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };

@@ -4,7 +4,6 @@ import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { MoreHorizontal } from "lucide-react";
-import { useAuth } from "@clerk/nextjs";
 
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { api } from "@/convex/_generated/api";
@@ -25,7 +24,6 @@ interface BoardCardProps {
 }
 
 export const BoardCard = ({ ...props }: BoardCardProps) => {
-  const { userId } = useAuth();
   const { mutate: onFavorite, pending: pendingFavorite } = useApiMutation(
     api.board.favorite
   );
@@ -45,7 +43,9 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
     }
   };
 
-  const authorLabel = userId === props.authorId ? "You" : props.authorName;
+  // TODO: remove clerk and and you or author name
+  const authorLabel = "You";
+  // const authorLabel = userId === props.authorId ? "You" : props.authorName;
   const createdAtLabel = formatDistanceToNow(props.createdAt, {
     addSuffix: true,
   });

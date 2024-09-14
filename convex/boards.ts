@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { query } from "./_generated/server";
 import { getAllOrThrow } from "convex-helpers/server/relationships";
+import { getAuthUserId } from "@convex-dev/auth/server";
 
 export const get = query({
   args: {
@@ -8,7 +9,7 @@ export const get = query({
     favorites: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
+    const identity = await getAuthUserId(ctx);
 
     if (!identity) {
       throw new Error("Unauthorized");
@@ -17,7 +18,7 @@ export const get = query({
     if (args.favorites) {
       const favoriteBoards = await ctx.db
         .query("userFavorites")
-        .withIndex("by_user", (q) => q.eq("userId", identity.subject))
+        .withIndex("by_user", (q) => q.eq("userId", identity))
         .order("desc")
         .collect();
 
@@ -38,13 +39,13 @@ export const get = query({
       boards = await ctx.db
         .query("boards")
         .withSearchIndex("search_title", (q) =>
-          q.search("title", title).eq("authorId", identity.subject)
+          q.search("title", title).eq("authorId", identity)
         )
         .collect();
     } else {
       boards = await ctx.db
         .query("boards")
-        .withIndex("by_author", (q) => q.eq("authorId", identity.subject))
+        .withIndex("by_author", (q) => q.eq("authorId", identity))
         .order("desc")
         .collect();
     }
@@ -53,7 +54,7 @@ export const get = query({
       return ctx.db
         .query("userFavorites")
         .withIndex("by_user_board", (q) =>
-          q.eq("userId", identity.subject).eq("boardId", board._id)
+          q.eq("userId", identity).eq("boardId", board._id)
         )
         .unique()
         .then((favorite) => {

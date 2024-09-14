@@ -1,6 +1,6 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
+// import { UserButton } from "@clerk/nextjs";
 import SearchInput from "./search-input";
 
 const Navbar = () => {
@@ -9,7 +9,8 @@ const Navbar = () => {
       <div className="hidden lg:flex lg:flex-1">
         <SearchInput />
       </div>
-      <UserButton />
+      {/* // TODO: remove clerk and add signout */}
+      {/* <UserButton /> */}
     </div>
   );
 };

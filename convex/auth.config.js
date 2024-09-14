@@ -1,7 +1,7 @@
 export default {
   providers: [
     {
-      domain: "https://live-bear-50.clerk.accounts.dev",
+      domain: process.env.CONVEX_SITE_URL,
       applicationID: "convex",
     },
   ],

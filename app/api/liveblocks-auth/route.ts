@@ -1,26 +1,25 @@
 import { Liveblocks } from "@liveblocks/node";
-import { auth, currentUser } from "@clerk/nextjs";
+import { NextRequest } from "next/server";
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET!,
 });
 
-export async function POST(request: Request) {
-  const authorization = await auth();
-  const user = await currentUser();
+export async function POST(request: NextRequest) {
+  let user_id = request.nextUrl.searchParams.get("user_id");
 
-  if (!authorization || !user) {
-    return new Response("Unauthorized!", { status: 403 });
+  if (!user_id) {
+    user_id = `Guest_${Date.now()}`;
   }
 
   const { room } = await request.json();
 
   const userInfo = {
-    name: user.firstName || "Anonymous frog",
-    picture: user.imageUrl!,
+    name: "Anonymous frog",
+    picture: "",
   };
 
-  const session = liveblocks.prepareSession(user.id, { userInfo });
+  const session = liveblocks.prepareSession(user_id, { userInfo });
 
   if (room) {
     session.allow(room, session.FULL_ACCESS);
