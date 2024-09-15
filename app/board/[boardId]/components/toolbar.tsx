@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ToolButton } from "./tool-button";
 import { CanvasMode, CanvasState, LayerType } from "@/types/canvas";
+import TabSeparator from "@/components/tab-separator";
 
 interface ToolbarProps {
   canvasState: CanvasState;
@@ -30,7 +31,7 @@ const Toolbar = ({
 }: ToolbarProps) => {
   return (
     <div className="flex gap-y-4 ml-auto mr-auto">
-      <div className=" rounded-md p-1.5 flex gap-5 items-center mr-6 border border-r-2">
+      <div className=" rounded-md p-1.5 flex items-center mr-6">
         <ToolButton
           label="Select"
           icon={MousePointer2}
@@ -43,6 +44,7 @@ const Toolbar = ({
             canvasState.mode === CanvasMode.Resizing
           }
         />
+        <TabSeparator />
         <ToolButton
           label="Text"
           icon={Type}
@@ -57,6 +59,7 @@ const Toolbar = ({
             canvasState.layerType === LayerType.Text
           }
         />
+        <TabSeparator />
         <ToolButton
           label="Sticky note"
           icon={StickyNote}
@@ -71,6 +74,7 @@ const Toolbar = ({
             canvasState.layerType === LayerType.Note
           }
         />
+        <TabSeparator />
         <ToolButton
           label="Square"
           icon={Square}
@@ -85,6 +89,7 @@ const Toolbar = ({
             canvasState.layerType === LayerType.Square
           }
         />
+        <TabSeparator />
         <ToolButton
           label="Ellipse"
           icon={Circle}
@@ -99,6 +104,7 @@ const Toolbar = ({
             canvasState.layerType === LayerType.Ellipse
           }
         />
+        <TabSeparator />
         <ToolButton
           label="Pencil"
           icon={Pencil}

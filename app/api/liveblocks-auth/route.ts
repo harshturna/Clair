@@ -5,6 +5,8 @@ const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET!,
 });
 
+const names = ["Alisha Minter", "Kevin Don", "Anonymous frog", "Harsh Turna"];
+
 export async function POST(request: NextRequest) {
   let user_id = request.nextUrl.searchParams.get("user_id");
 
@@ -15,7 +17,7 @@ export async function POST(request: NextRequest) {
   const { room } = await request.json();
 
   const userInfo = {
-    name: "Anonymous frog",
+    name: names[Math.floor(Math.random() * names.length)],
     picture: "",
   };
 

@@ -21,7 +21,6 @@ export function Room({
   fallback: NonNullable<ReactNode> | null;
 }) {
   const user = useQuery(api.user.getCurrentUser);
-  if (!user?._id) return;
   return (
     <LiveblocksProvider
       authEndpoint={`/api/liveblocks-auth?user_id=${user?._id}`}

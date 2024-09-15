@@ -4,27 +4,24 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
 import Image from "next/image";
-import { Poppins } from "next/font/google";
+import { Playpen_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Hint } from "@/components/hint";
 import { useRenameModal } from "@/store/use-rename-modal";
 import { Actions } from "@/components/actions";
-import { Menu } from "lucide-react";
+import { Hash, Menu } from "lucide-react";
+import TabSeparator from "@/components/tab-separator";
 
 interface InfoProps {
   boardId: string;
 }
 
-const font = Poppins({
+const font = Playpen_Sans({
   subsets: ["latin"],
   weight: ["600"],
 });
-
-const TabSeparator = () => {
-  return <div className="text-neutral-300 px-1.5">|</div>;
-};
 
 const Info = ({ boardId }: InfoProps) => {
   const { onOpen } = useRenameModal();
@@ -37,7 +34,7 @@ const Info = ({ boardId }: InfoProps) => {
       <Hint label="View all boards" sideOffset={10}>
         <Button asChild className="px-2" variant="board">
           <Link href="/">
-            <Image src="/logo.svg" alt="Logo" height={50} width={50} />
+            <Hash className="w-8 h-8" />
             <span
               className={cn(
                 "font-semibold text-xl ml-2 text-black",

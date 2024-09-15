@@ -21,15 +21,15 @@ const convex = new ConvexReactClient(convexUrl);
 export const ConvexClientProvider = ({
   children,
 }: ConvexClientProviderProps) => {
+  console.log("Heree");
   return (
     <ConvexAuthNextjsProvider client={convex}>
-      <Unauthenticated>
-        <SignIn />
-      </Unauthenticated>
-      <AuthLoading>
-        <Loading />
-      </AuthLoading>
-      <Authenticated>{children}</Authenticated>
+      {/* <Unauthenticated>{children}</Unauthenticated> */}
+      {/* <AuthLoading> */}
+      {/* <Loading /> */}
+      {/* </AuthLoading> */}
+      {/* <Authenticated>{children}</Authenticated> */}
+      {children}
     </ConvexAuthNextjsProvider>
   );
 };
