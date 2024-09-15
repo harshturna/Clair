@@ -40,6 +40,7 @@ import { SelectionTools } from "./selection-tools";
 import { Path } from "./path";
 import { useDisableScrollBounce } from "@/hooks/use-disable-scroll-bounce";
 import { useDeleteLayers } from "@/hooks/use-delete-layers";
+import SideToolbar from "./side-toolbar";
 
 const MAX_LAYERS = 100;
 
@@ -416,16 +417,19 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
-      <Info boardId={boardId} />
-      <Participants />
-      <Toolbar
-        canvasState={canvasState}
-        setCanvasState={setCanvasState}
-        canUndo={canUndo}
-        canRedo={canRedo}
-        undo={history.undo}
-        redo={history.redo}
-      />
+      <div className="absolute flex w-full py-4 px-8 bg-white shadow-sm">
+        <Info boardId={boardId} />
+        <Toolbar
+          canvasState={canvasState}
+          setCanvasState={setCanvasState}
+          canUndo={canUndo}
+          canRedo={canRedo}
+          undo={history.undo}
+          redo={history.redo}
+        />
+        <Participants />
+      </div>
+      <SideToolbar />
       <SelectionTools camera={camera} setLastUserColor={setLastUserColor} />
       <svg
         className="h-screen w-screen"

@@ -13,12 +13,12 @@ const Participants = () => {
   const hasMoreUsers = users.length > MAX_SHOWN_OTHER_USERS;
 
   return (
-    <div className="absolute h-12 top-2 right-2 bg-white rounded-md p-3 flex items-center shadow-md">
+    <div className=" h-12 ml-auto rounded-md p-3 flex items-center">
       <div className="flex gap-x-2">
         {users.slice(0, MAX_SHOWN_OTHER_USERS).map((user) => {
           return (
             <UserAvatar
-              borderColor={connectionIdToColor(user.connectionId)}
+              backgroundColor={connectionIdToColor(user.connectionId)}
               key={user.connectionId}
               src={user.info.picture}
               name={user.info.name}
@@ -29,7 +29,7 @@ const Participants = () => {
 
         {currentUser && (
           <UserAvatar
-            borderColor={connectionIdToColor(currentUser.connectionId)}
+            backgroundColor={connectionIdToColor(currentUser.connectionId)}
             src={currentUser.info.picture}
             name={`${currentUser.info.name} (You)`}
             fallback={currentUser.info.name[0]}

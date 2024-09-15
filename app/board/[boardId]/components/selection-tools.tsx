@@ -84,7 +84,7 @@ export const SelectionTools = memo(
       <div
         className="absolute p-3 rounded-xl bg-white shadow-sm border flex select-none"
         style={{
-          transform: `translate(calc(${x}px - 50%), calc(${y - 16}px - 100%))`,
+          transform: `translate(calc(${x}px - 50%), calc(${y - 10}px - 100%))`,
         }}
       >
         <ColorPicker onChange={setFill} />

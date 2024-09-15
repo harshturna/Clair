@@ -1,24 +1,28 @@
 import { Hint } from "@/components/hint";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getContrastingTextColor } from "@/lib/utils";
 
 interface UserAvatarProps {
   src?: string;
   name?: string;
   fallback?: string;
-  borderColor?: string;
+  backgroundColor?: string;
 }
 
 export const UserAvatar = ({
   src,
   name,
   fallback,
-  borderColor,
+  backgroundColor,
 }: UserAvatarProps) => {
   return (
     <Hint label={name || "Anonymous frog"} sideOffset={18}>
-      <Avatar className="h-8 w-8 border-2" style={{ borderColor }}>
+      <Avatar className="h-8 w-8" style={{ backgroundColor }}>
         <AvatarImage src={src} />
-        <AvatarFallback className="text-xs font-semibold">
+        <AvatarFallback
+          className="text-xs font-semibold"
+          style={{ backgroundColor, color: "#fff" }}
+        >
           {fallback}
         </AvatarFallback>
       </Avatar>

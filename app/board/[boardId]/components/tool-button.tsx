@@ -11,6 +11,8 @@ interface ToolButtonProps {
   onClick: () => void;
   isActive?: boolean;
   isDisabled?: boolean;
+  width?: number;
+  height?: number;
 }
 
 export const ToolButton = ({
@@ -19,16 +21,18 @@ export const ToolButton = ({
   onClick,
   isActive,
   isDisabled,
+  width,
+  height,
 }: ToolButtonProps) => {
   return (
-    <Hint label={label} side="right" sideOffset={14}>
+    <Hint label={label} side="bottom" sideOffset={14}>
       <Button
         disabled={isDisabled}
         onClick={onClick}
         size="icon"
         variant={isActive ? "boardActive" : "board"}
       >
-        <Icon />
+        <Icon width={width || 24} height={height || 24} />
       </Button>
     </Hint>
   );
