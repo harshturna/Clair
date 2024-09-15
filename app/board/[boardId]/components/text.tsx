@@ -1,17 +1,17 @@
-import { Kalam } from "next/font/google";
+import { Caveat } from "next/font/google";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { cn, rgbToHex } from "@/lib/utils";
 import { TextLayer } from "@/types/canvas";
 import { useMutation } from "@liveblocks/react";
 
-const font = Kalam({
+const font = Caveat({
   subsets: ["latin"],
   weight: ["400"],
 });
 
 const calculateFontSize = (width: number, height: number) => {
   const maxFontSize = 96;
-  const scaleFactor = 0.5;
+  const scaleFactor = 0.6;
   const fontSizeBasedOnHeight = height * scaleFactor;
   const fontSizeBasedOnWidth = width * scaleFactor;
 

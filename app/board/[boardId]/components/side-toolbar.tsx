@@ -1,88 +1,34 @@
 "use client";
+import { widgets } from "@/constants/widgets";
+import { CanvasMode, CanvasState, LayerType } from "@/types/canvas";
+import { WidgetToolButton } from "./widget-tool-button";
 
-import {
-  AppWindowMac,
-  Braces,
-  Brackets,
-  Calendar,
-  Database,
-  Laptop,
-  Monitor,
-  MousePointer,
-  Smartphone,
-  ToggleLeft,
-  ToggleRight,
-  Tv,
-  Youtube,
-} from "lucide-react";
-import { ToolButton } from "./tool-button";
+interface SideToolbarProps {
+  canvasState: CanvasState;
+  setCanvasState: (newState: CanvasState) => void;
+}
 
-const sideWidgets = [
-  {
-    element: Smartphone,
-    name: "Phone",
-  },
-  {
-    element: Laptop,
-    name: "Laptop",
-  },
-  {
-    element: Tv,
-    name: "TV",
-  },
-  {
-    element: Monitor,
-    name: "Monitor",
-  },
-  {
-    element: AppWindowMac,
-    name: "Browser",
-  },
-  {
-    element: Youtube,
-    name: "Video",
-  },
-  {
-    element: Database,
-    name: "Database",
-  },
-  {
-    element: MousePointer,
-    name: "Mouse Pointer",
-  },
-  {
-    element: Braces,
-    name: "Braces",
-  },
-  {
-    element: Brackets,
-    name: "Brackets",
-  },
-  {
-    element: Calendar,
-    name: "Calendar",
-  },
-  {
-    element: ToggleRight,
-    name: "Switch Right",
-  },
-  {
-    element: ToggleLeft,
-    name: "Switch Left",
-  },
-];
-
-const SideToolbar = () => {
+const SideToolbar = ({ canvasState, setCanvasState }: SideToolbarProps) => {
   return (
-    <div className="bg-white  shadow-md absolute grid grid-cols-3 bottom-0 top-[86px] p-2">
-      {sideWidgets.map((widget) => (
-        <ToolButton
+    <div className="bg-white shadow-md absolute grid grid-cols-3 gap-y-4 top-[86px] px-4 py-4 gap-4 overflow-y-scroll h-[calc(100vh_-_85px)]">
+      {widgets.map((widget) => (
+        <WidgetToolButton
           key={widget.name}
           width={40}
           height={40}
           label={widget.name}
           icon={widget.element}
-          onClick={() => {}}
+          isActive={
+            canvasState.mode === CanvasMode.Widget &&
+            canvasState.name === widget.name
+          }
+          onClick={() => {
+            setCanvasState({
+              mode: CanvasMode.Widget,
+              layerType: LayerType.Widget,
+              name: widget.name,
+            });
+          }}
         />
       ))}
     </div>

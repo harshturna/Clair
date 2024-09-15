@@ -69,6 +69,39 @@ const Canvas = ({ boardId }: CanvasProps) => {
   // prevents scrolling of the screen out of bounds
   useDisableScrollBounce();
 
+  const insertWidget = useMutation(
+    (
+      { storage, setMyPresence },
+      layerType: LayerType.Widget,
+      position: Point,
+      name: string
+    ) => {
+      const liveLayers = storage.get("layers");
+
+      // reached max layer limit
+      if (liveLayers.size >= MAX_LAYERS) {
+        return;
+      }
+
+      const liveLayerIds = storage.get("layerIds");
+      const layerId = nanoid();
+      const widgetLayer = new LiveObject({
+        type: layerType,
+        name,
+        x: position.x,
+        y: position.y,
+        height: 100,
+        width: 100,
+        fill: lastUserColor,
+      });
+      liveLayerIds.push(layerId);
+      liveLayers.set(layerId, widgetLayer);
+      setMyPresence({ selection: [layerId] }, { addToHistory: true });
+      setCanvasState({ mode: CanvasMode.None });
+    },
+    [lastUserColor]
+  );
+
   const insertLayer = useMutation(
     (
       { storage, setMyPresence },
@@ -95,6 +128,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
         height: 100,
         width: 100,
         fill: lastUserColor,
+        name: "",
       });
       liveLayerIds.push(layerId);
       liveLayers.set(layerId, layer);
@@ -132,7 +166,6 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
   const startMultiSelection = useCallback((current: Point, origin: Point) => {
     if (Math.abs(current.x - origin.x) + Math.abs(current.y - origin.y) > 5) {
-      console.log("Selection net begins");
       setCanvasState({
         mode: CanvasMode.SelectionNet,
         origin,
@@ -240,6 +273,8 @@ const Canvas = ({ boardId }: CanvasProps) => {
         insertPath();
       } else if (canvasState.mode === CanvasMode.Inserting) {
         insertLayer(canvasState.layerType, point);
+      } else if (canvasState.mode === CanvasMode.Widget) {
+        insertWidget(canvasState.layerType, point, canvasState.name);
       } else {
         setCanvasState({
           mode: CanvasMode.None,
@@ -269,7 +304,11 @@ const Canvas = ({ boardId }: CanvasProps) => {
     (e: React.PointerEvent) => {
       const point = pointerEventToCanvasPoint(e, camera);
 
-      if (canvasState.mode === CanvasMode.Inserting) return;
+      if (
+        canvasState.mode === CanvasMode.Inserting ||
+        canvasState.mode === CanvasMode.Widget
+      )
+        return;
 
       if (canvasState.mode === CanvasMode.Pencil) {
         startDrawing(point, e.pressure);
@@ -417,7 +456,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
-      <div className="absolute flex w-full py-4 px-8 bg-white shadow-sm">
+      <div className="absolute flex w-full py-4 px-8 bg-white shadow-sm h-[85px]">
         <Info boardId={boardId} />
         <Toolbar
           canvasState={canvasState}
@@ -429,7 +468,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
         />
         <Participants />
       </div>
-      <SideToolbar />
+      <SideToolbar canvasState={canvasState} setCanvasState={setCanvasState} />
       <SelectionTools camera={camera} setLastUserColor={setLastUserColor} />
       <svg
         className="h-screen w-screen"

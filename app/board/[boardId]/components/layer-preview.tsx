@@ -9,6 +9,7 @@ import { Text } from "./text";
 import { Note } from "./note";
 import { Path } from "./path";
 import { rgbToHex } from "@/lib/utils";
+import { Widget } from "./widget";
 
 interface LayerPreviewProps {
   id: string;
@@ -68,6 +69,16 @@ export const LayerPreview = memo(
             x={layer.x}
             y={layer.y}
             fill={layer.fill ? rgbToHex(layer.fill) : "#000"}
+          />
+        );
+      case LayerType.Widget:
+        return (
+          <Widget
+            key={id}
+            id={id}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+            layer={layer}
           />
         );
       default:

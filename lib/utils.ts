@@ -100,8 +100,8 @@ export function pointerEventToCanvasPoint(
   camera: Camera
 ) {
   return {
-    x: Math.round(e.clientX) - camera.x,
-    y: Math.round(e.clientY) - camera.y,
+    x: Math.floor(e.clientX) - camera.x,
+    y: Math.floor(e.clientY) - camera.y,
   };
 }
 
@@ -148,6 +148,7 @@ export function penPointsToPathLayer(
     height: bottom - top,
     fill: color,
     points: points.map(([x, y, pressure]) => [x - left, y - top, pressure]),
+    name: "",
   };
 }
 

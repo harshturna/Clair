@@ -9,6 +9,7 @@ export type CanvasState =
         | LayerType.Text
         | LayerType.Square;
     }
+  | { mode: CanvasMode.Widget; layerType: LayerType.Widget; name: string }
   | { mode: CanvasMode.Resizing; initialBounds: XYWH; corner: Side }
   | { mode: CanvasMode.Translating; current: Point }
   | { mode: CanvasMode.SelectionNet; origin: Point; current?: Point }
@@ -22,6 +23,7 @@ export enum CanvasMode {
   Inserting,
   Resizing,
   Pencil,
+  Widget,
 }
 
 export type Color = {
@@ -41,6 +43,7 @@ export enum LayerType {
   Path,
   Text,
   Note,
+  Widget,
 }
 
 export type SquareLayer = {
@@ -50,6 +53,18 @@ export type SquareLayer = {
   height: number;
   width: number;
   fill: Color;
+  value?: string;
+  name: string;
+};
+
+export type WidgetLayer = {
+  type: LayerType.Widget;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  fill: Color;
+  name: string;
   value?: string;
 };
 
@@ -61,6 +76,7 @@ export type EllipseLayer = {
   width: number;
   fill: Color;
   value?: string;
+  name: string;
 };
 
 export type PathLayer = {
@@ -72,6 +88,7 @@ export type PathLayer = {
   fill: Color;
   points: number[][];
   value?: string;
+  name: string;
 };
 
 export type TextLayer = {
@@ -82,6 +99,7 @@ export type TextLayer = {
   width: number;
   fill: Color;
   value?: string;
+  name: string;
 };
 
 export type NoteLayer = {
@@ -92,6 +110,7 @@ export type NoteLayer = {
   width: number;
   fill: Color;
   value?: string;
+  name: string;
 };
 
 export type Point = {
@@ -115,6 +134,7 @@ export enum Side {
 
 export type Layer =
   | SquareLayer
+  | WidgetLayer
   | EllipseLayer
   | PathLayer
   | TextLayer

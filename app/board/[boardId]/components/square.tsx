@@ -19,8 +19,7 @@ export const Square = ({
 
   // TODO: change back to rect and add for all different types of shapes Konty.app inspiration
   return (
-    <>
-      {/* <rect
+    <rect
       className="drop-shadow-md"
       onPointerDown={(e) => onPointerDown(e, id)}
       style={{
@@ -33,21 +32,6 @@ export const Square = ({
       strokeWidth={1}
       fill={fill ? rgbToHex(fill) : "#888"}
       stroke={selectionColor || "transparent"}
-    /> */}
-      <Star
-        className="drop-shadow-md"
-        onPointerDown={(e) => onPointerDown(e, id)}
-        style={{
-          transform: `translate(${x}px), ${y}px)`,
-        }}
-        x={x}
-        y={y}
-        width={width}
-        height={height}
-        strokeWidth={1}
-        fill={fill ? rgbToHex(fill) : "#888"}
-        stroke={selectionColor || "transparent"}
-      />
-    </>
+    />
   );
 };
