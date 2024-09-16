@@ -11,7 +11,6 @@ interface BoardIdPageProps {
 }
 
 const BoardIdPage = ({ params }: BoardIdPageProps) => {
-  console.log("Getting here");
   return (
     <Room roomId={params.boardId} fallback={<Loading />}>
       <Canvas boardId={params.boardId} />

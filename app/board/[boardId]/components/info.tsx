@@ -37,7 +37,7 @@ const Info = ({ boardId }: InfoProps) => {
             <Hash className="w-8 h-8" />
             <span
               className={cn(
-                "font-semibold text-xl ml-2 text-black",
+                "font-semibold text-xl ml-1 text-black",
                 font.className
               )}
             >
