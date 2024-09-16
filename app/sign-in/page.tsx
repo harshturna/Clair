@@ -15,7 +15,7 @@ export default function SignIn() {
     >
       <input name="email" placeholder="Email" type="text" />
       <input name="password" placeholder="Password" type="password" />
-      <input name="flow" type="hidden" value="signIn" />
+      <input name="flow" type="hidden" value="signUp" />
       <button type="submit">{step === "signIn" ? "Sign in" : "Sign up"}</button>
       <button
         type="button"

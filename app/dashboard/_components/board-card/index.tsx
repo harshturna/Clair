@@ -12,6 +12,7 @@ import Footer from "./footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Actions } from "@/components/actions";
 import { toast } from "sonner";
+import { useQuery } from "convex/react";
 
 interface BoardCardProps {
   id: string;
@@ -31,6 +32,8 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
     api.board.unfavorite
   );
 
+  const user = useQuery(api.user.getCurrentUser);
+
   const toggleFavorite = () => {
     if (props.isFavorite) {
       onUnfavorite({ id: props.id }).catch(() =>
@@ -43,9 +46,7 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
     }
   };
 
-  // TODO: remove clerk and and you or author name
-  const authorLabel = "You";
-  // const authorLabel = userId === props.authorId ? "You" : props.authorName;
+  const authorLabel = user?._id === props.authorId ? "You" : props.authorName;
   const createdAtLabel = formatDistanceToNow(props.createdAt, {
     addSuffix: true,
   });

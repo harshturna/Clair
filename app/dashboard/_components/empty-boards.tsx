@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { toast } from "sonner";
+import { Hash } from "lucide-react";
 
 export const EmptyBoards = () => {
   const { mutate, pending } = useApiMutation(api.board.create);
@@ -21,7 +22,7 @@ export const EmptyBoards = () => {
 
   return (
     <div className="h-full flex flex-col items-center justify-center">
-      <Image src="/logo.svg" height={110} width={110} alt="Empty" />
+      <Hash width="120px" height="120px" />
       <h2 className="text-2xl font-semibold mt-6">Crete your first board</h2>
       <p className="text-muted-foreground text-sm mt-2">
         Start by creating a board

@@ -34,7 +34,7 @@ const HeroSection = () => {
         <Link href="/dashboard">
           <Button className="py-3 px-6 md:py-4 md:px-10">
             <div className="flex items-center justify-center gap-1">
-              <div className="text-xs sm:text-sm md:text-md">Get Clair</div>
+              <div className="text-xs sm:text-sm md:text-md">Try Clair</div>
               <div>
                 <ArrowRight className="w-4 h-4" />
               </div>

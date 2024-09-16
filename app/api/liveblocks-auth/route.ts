@@ -1,27 +1,38 @@
 import { Liveblocks } from "@liveblocks/node";
 import { NextRequest } from "next/server";
+import { fetchQuery } from "convex/nextjs";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET!,
 });
 
-const names = ["Alisha Minter", "Kevin Don", "Anonymous frog", "Harsh Turna"];
+const names = [
+  "Anonymous Frog",
+  "Lazy Bear",
+  "Sleeping Fox",
+  "Wise Turtle",
+  "Smiling Cat",
+];
 
 export async function POST(request: NextRequest) {
-  let user_id = request.nextUrl.searchParams.get("user_id");
+  const user = await fetchQuery(api.user.getCurrentUser);
 
-  if (!user_id) {
-    user_id = `Guest_${Date.now()}`;
-  }
+  const userName =
+    user?.name || names[Math.floor(Math.random() * names.length)];
 
   const { room } = await request.json();
 
   const userInfo = {
-    name: names[Math.floor(Math.random() * names.length)],
+    name: userName,
     picture: "",
   };
 
-  const session = liveblocks.prepareSession(user_id, { userInfo });
+  const session = liveblocks.prepareSession(
+    user?._id || `Guest_${Date.now()}`,
+    { userInfo }
+  );
 
   if (room) {
     session.allow(room, session.FULL_ACCESS);

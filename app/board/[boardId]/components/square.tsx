@@ -1,6 +1,5 @@
 import { rgbToHex } from "@/lib/utils";
 import { SquareLayer } from "@/types/canvas";
-import { Star } from "lucide-react";
 
 interface SquareProps {
   id: string;
@@ -16,8 +15,6 @@ export const Square = ({
   selectionColor,
 }: SquareProps) => {
   const { x, y, width, height, fill } = layer;
-
-  // TODO: change back to rect and add for all different types of shapes Konty.app inspiration
   return (
     <rect
       className="drop-shadow-md"

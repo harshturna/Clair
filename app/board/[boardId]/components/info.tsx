@@ -3,7 +3,6 @@
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
-import Image from "next/image";
 import { Playpen_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -27,13 +26,13 @@ const Info = ({ boardId }: InfoProps) => {
   const { onOpen } = useRenameModal();
   const data = useQuery(api.board.get, { id: boardId as Id<"boards"> });
 
-  if (!data) return <InfoSkeleton />;
+  if (!data) return;
 
   return (
     <div className="rounded-md px-1.5 h-12 flex items-center">
       <Hint label="View all boards" sideOffset={10}>
         <Button asChild className="px-2" variant="board">
-          <Link href="/">
+          <Link href="/dashboard">
             <Hash className="w-8 h-8" />
             <span
               className={cn(
@@ -67,12 +66,6 @@ const Info = ({ boardId }: InfoProps) => {
         </div>
       </Actions>
     </div>
-  );
-};
-
-export const InfoSkeleton = function InfoSkeleton() {
-  return (
-    <div className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md w-[300px]" />
   );
 };
 

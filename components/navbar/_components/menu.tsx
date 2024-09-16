@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Playpen_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import {
@@ -20,8 +19,6 @@ import {
   Presentation,
 } from "lucide-react";
 import Image from "next/image";
-
-const font = Playpen_Sans({ subsets: ["latin"], weight: ["500"] });
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -134,15 +131,14 @@ export function Menu() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="p-4 w-[350px] mx-auto">
+            <div className="p-4 w-[600px] mx-auto">
               <div>
                 <p
                   className={cn(
-                    "mt-2 text-md font-semibold text-center text-sky-500",
-                    font.className
+                    "mt-2 text-md font-semibold text-center text-sky-500"
                   )}
                 >
-                  Clair is free, for your team from ours
+                  Clair is completely free, for your team from ours
                 </p>
               </div>
               <Image
@@ -150,7 +146,7 @@ export function Menu() {
                 alt="Free section image"
                 width={1000}
                 height={1000}
-                className="w-80 pt-10"
+                className="w-80 pt-10 mx-auto"
               />
             </div>
           </NavigationMenuContent>

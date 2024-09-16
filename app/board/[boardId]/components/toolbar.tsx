@@ -135,9 +135,3 @@ const Toolbar = ({
 };
 
 export default Toolbar;
-
-export const ToolbarSkeleton = function ToolbarSkeleton() {
-  return (
-    <div className="absolute top-[50%] -translate-y-[50%] left-2 flex flex-col gap-y-4 bg-white h-[360px] w-[50px] shadow-md rounded-md" />
-  );
-};

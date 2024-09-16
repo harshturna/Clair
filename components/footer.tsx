@@ -10,9 +10,9 @@ const Footer = () => {
     <div className="p-8 flex items-center gap-2 text-center justify-center">
       <div className="flex items-center gap-1">
         <Hash className="w-10 h-10" />
-        <p className={cn("text-2xl", font.className)}>Clair</p>
+        <p className={cn("text-3xl", font.className)}>Clair</p>
       </div>
-      <div className="text-muted-foreground flex items-center mt-1">
+      <div className="text-muted-foreground flex items-center mt-2">
         <Link href="https://harshturna.com" target="_blank">
           by harsh
         </Link>

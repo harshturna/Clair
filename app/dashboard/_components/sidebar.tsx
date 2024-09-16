@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Poppins } from "next/font/google";
+import { Playpen_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Star } from "lucide-react";
+import { Hash, LayoutDashboard, Star } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-const font = Poppins({
+const font = Playpen_Sans({
   subsets: ["latin"],
   weight: ["600"],
 });
@@ -20,10 +20,10 @@ const Sidebar = () => {
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5 ">
       <Link href="/">
-        <div className="flex items-center gap-x-2">
-          <Image src="/logo.svg" alt="Logo" height={60} width={60} />
+        <div className="flex items-center gap-1">
+          <Hash width="40px" height="40px" />
           <span className={cn("font-semibold text-2xl", font.className)}>
-            Board
+            Clair
           </span>
         </div>
       </Link>
@@ -47,7 +47,7 @@ const Sidebar = () => {
         >
           <Link
             href={{
-              pathname: "/",
+              pathname: "/dashboard",
               query: { favorites: true },
             }}
           >

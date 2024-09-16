@@ -27,13 +27,18 @@ export const create = mutation({
       throw new Error("Unauthorized");
     }
 
+    const user = await ctx.db.get(identity);
+
+    if (!user) {
+      throw new Error("Unauthorized");
+    }
+
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
-    // todo: fix author name
     const board = await ctx.db.insert("boards", {
       title: args.title,
       authorId: identity,
-      authorName: "User 1",
+      authorName: user.name || "",
       imageUrl: randomImage,
     });
 
