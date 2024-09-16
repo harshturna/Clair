@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Clair
 
-## Getting Started
+Clair is a powerful collaborative whiteboard application designed to enhance for individuals and team creativity, remote collaboration. With its intuitive interface and robust feature set, Clair empowers teams to visualize ideas, design user experiences, and conduct engaging virtual workshops effortlessly.
 
-First, run the development server:
+## Supercharge Your Collaboration
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Unlock boundless creativity with powerful tools at your fingertips.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Whiteboard**
+   Visualize your ideas instantly
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Pre-built Components**
+   Accelerate workflow with ready-made elements
 
-## Learn More
+3. **Real-time Collaboration**
+   Work together seamlessly from anywhere
 
-To learn more about Next.js, take a look at the following resources:
+4. **Version History**
+   Track changes and revert with ease
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Use Cases
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Brainstorming**: Facilitate remote team ideation sessions with real-time visual collaboration.
+- **Project Planning**: Visualize project timelines, tasks, and dependencies using interactive diagrams and icons.
+- **UX Design**: Create and iterate on wireframes and user flows collaboratively with stakeholders.
+- **Education**: Enhance online learning through interactive visual explanations and group exercises.
+- **Strategic Mapping**: Develop and refine business strategies using shared mind maps and flowcharts.
+- **Remote Workshops**: Conduct engaging virtual workshops with interactive visual aids and group activities.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Transform the way your team collaborates with Clair - where ideas come to life and innovation knows no bounds.
