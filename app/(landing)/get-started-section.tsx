@@ -14,7 +14,7 @@ const GetStartedFree = () => {
           collaborate
         </div>
         <div className="text-sky-500 hover:underline hover:cursor-pointer">
-          <Link href="/login" className="flex items-center gap-1">
+          <Link href="/dashboard" className="flex items-center gap-1">
             Get started <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
