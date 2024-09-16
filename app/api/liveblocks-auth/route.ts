@@ -2,7 +2,6 @@ import { Liveblocks } from "@liveblocks/node";
 import { NextRequest } from "next/server";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET!,
