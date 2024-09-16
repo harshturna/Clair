@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { useApiMutation } from "@/hooks/use-api-mutation";
-import { cn } from "@/lib/utils";
+import { cn, getUser } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import { toast } from "sonner";
 
@@ -14,6 +14,7 @@ const NewBoardButton = ({ disabled }: NewBoardButtonProps) => {
   const onClick = () => {
     mutate({
       title: "Untitled",
+      userId: getUser() || "",
     })
       .then((id) => {
         toast.success("Board created");

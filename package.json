@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth/core": "^0.34.2",
-    "@convex-dev/auth": "^0.0.66",
     "@liveblocks/client": "^2.6.0",
     "@liveblocks/node": "^2.6.0",
     "@liveblocks/react": "^2.6.0",

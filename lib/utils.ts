@@ -9,6 +9,7 @@ import {
   XYWH,
 } from "@/types/canvas";
 import { type ClassValue, clsx } from "clsx";
+import { nanoid } from "nanoid";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -166,4 +167,16 @@ export function getSvgPathFromStroke(stroke: number[][]) {
 
   d.push("Z");
   return d.join(" ");
+}
+
+export function getUser() {
+  const isBrowser = typeof window !== "undefined";
+  if (!isBrowser) return;
+  return localStorage.getItem("user_id");
+}
+
+export function setUser() {
+  const isBrowser = typeof window !== "undefined";
+  if (!isBrowser) return;
+  localStorage.setItem("user_id", nanoid());
 }

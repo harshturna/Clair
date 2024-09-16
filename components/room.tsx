@@ -8,6 +8,7 @@ import {
 } from "@liveblocks/react/suspense";
 import { LiveList, LiveMap, LiveObject } from "@liveblocks/client";
 import { Layer } from "@/types/canvas";
+import { getUser } from "@/lib/utils";
 
 export function Room({
   children,
@@ -18,8 +19,13 @@ export function Room({
   roomId: string;
   fallback: NonNullable<ReactNode> | null;
 }) {
+  const user = getUser();
+  console.log(user);
   return (
-    <LiveblocksProvider authEndpoint={`/api/liveblocks-auth`} throttle={16}>
+    <LiveblocksProvider
+      authEndpoint={`/api/liveblocks-auth?user_id=${user}`}
+      throttle={16}
+    >
       <RoomProvider
         id={roomId}
         initialPresence={{

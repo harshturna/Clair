@@ -1,18 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { useQuery } from "convex/react";
 
 import { Button } from "@/components/ui/button";
 
 import { X, AlignJustify } from "lucide-react";
 import Link from "next/link";
 import DropdownMenu from "./drop-down-menu";
-import { api } from "@/convex/_generated/api";
 
 const ActionButtons = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const currentUserId = useQuery(api.user.getCurrentUser)?._id;
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -28,9 +25,7 @@ const ActionButtons = () => {
         <div className="flex xl:space-x-4"></div>
         <div className="flex lg:space-x-4 items-center pr-4">
           <Link href={"/dashboard"}>
-            <Button className="hidden lg:block">
-              {currentUserId ? "View Dashboard" : "Login"}
-            </Button>
+            <Button className="hidden lg:block">View Dashboard</Button>
           </Link>
         </div>
       </div>

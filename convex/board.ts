@@ -1,6 +1,5 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
-import { getAuthUserId } from "@convex-dev/auth/server";
 
 // everything from placeholders
 const images = [
@@ -19,17 +18,10 @@ const images = [
 export const create = mutation({
   args: {
     title: v.string(),
+    userId: v.string(),
   },
   handler: async (ctx, args) => {
-    const identity = await getAuthUserId(ctx);
-
-    if (!identity) {
-      throw new Error("Unauthorized");
-    }
-
-    const user = await ctx.db.get(identity);
-
-    if (!user) {
+    if (!args.userId) {
       throw new Error("Unauthorized");
     }
 
@@ -37,8 +29,8 @@ export const create = mutation({
 
     const board = await ctx.db.insert("boards", {
       title: args.title,
-      authorId: identity,
-      authorName: user.name || "",
+      authorId: args.userId,
+      authorName: "",
       imageUrl: randomImage,
     });
 
@@ -49,20 +41,14 @@ export const create = mutation({
 export const remove = mutation({
   args: {
     id: v.id("boards"),
+    userId: v.string(),
   },
   handler: async (ctx, args) => {
-    const identity = await getAuthUserId(ctx);
-
-    if (!identity) {
-      throw new Error("Unauthorized");
-    }
-
-    const userId = identity;
-
+    if (!args.userId) return;
     const existingFavorite = await ctx.db
       .query("userFavorites")
       .withIndex("by_user_board", (q) =>
-        q.eq("userId", userId).eq("boardId", args.id)
+        q.eq("userId", args.userId).eq("boardId", args.id)
       )
       .unique();
 
@@ -78,14 +64,9 @@ export const update = mutation({
   args: {
     id: v.id("boards"),
     title: v.string(),
+    userId: v.string(),
   },
   handler: async (ctx, args) => {
-    const identity = await getAuthUserId(ctx);
-
-    if (!identity) {
-      throw new Error("Unauthorized");
-    }
-
     const title = args.title.trim();
 
     if (!title) {
@@ -105,11 +86,9 @@ export const update = mutation({
 });
 
 export const favorite = mutation({
-  args: { id: v.id("boards") },
+  args: { id: v.id("boards"), userId: v.string() },
   handler: async (ctx, args) => {
-    const identity = await getAuthUserId(ctx);
-
-    if (!identity) {
+    if (!args.userId) {
       throw new Error("Unauthorized");
     }
 
@@ -119,7 +98,7 @@ export const favorite = mutation({
       throw new Error("Board not found");
     }
 
-    const userId = identity;
+    const userId = args.userId;
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
@@ -141,11 +120,9 @@ export const favorite = mutation({
 });
 
 export const unfavorite = mutation({
-  args: { id: v.id("boards") },
+  args: { id: v.id("boards"), userId: v.string() },
   handler: async (ctx, args) => {
-    const identity = await getAuthUserId(ctx);
-
-    if (!identity) {
+    if (!args.userId) {
       throw new Error("Unauthorized");
     }
 
@@ -155,7 +132,7 @@ export const unfavorite = mutation({
       throw new Error("Board not found");
     }
 
-    const userId = identity;
+    const userId = args.userId;
 
     const existingFavorite = await ctx.db
       .query("userFavorites")

@@ -1,5 +1,6 @@
 "use client";
 
+import { getUser, setUser } from "@/lib/utils";
 import BoardList from "./_components/board-list";
 
 interface DashboardPageProps {
@@ -7,6 +8,11 @@ interface DashboardPageProps {
     search?: string;
     favorites?: string;
   };
+}
+
+const user = getUser();
+if (!user) {
+  setUser();
 }
 
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {

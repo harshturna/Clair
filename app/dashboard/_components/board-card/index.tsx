@@ -12,7 +12,7 @@ import Footer from "./footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Actions } from "@/components/actions";
 import { toast } from "sonner";
-import { useQuery } from "convex/react";
+import { getUser } from "@/lib/utils";
 
 interface BoardCardProps {
   id: string;
@@ -32,21 +32,19 @@ export const BoardCard = ({ ...props }: BoardCardProps) => {
     api.board.unfavorite
   );
 
-  const user = useQuery(api.user.getCurrentUser);
-
   const toggleFavorite = () => {
     if (props.isFavorite) {
-      onUnfavorite({ id: props.id }).catch(() =>
+      onUnfavorite({ id: props.id, userId: getUser() || "" }).catch(() =>
         toast.error("Failed to unfavorite")
       );
     } else {
-      onFavorite({ id: props.id }).catch(() =>
+      onFavorite({ id: props.id, userId: getUser() || "" }).catch(() =>
         toast.error("Failed to favorite ")
       );
     }
   };
 
-  const authorLabel = user?._id === props.authorId ? "You" : props.authorName;
+  const authorLabel = getUser() === props.authorId ? "You" : props.authorName;
   const createdAtLabel = formatDistanceToNow(props.createdAt, {
     addSuffix: true,
   });

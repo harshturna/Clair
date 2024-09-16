@@ -7,6 +7,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { BoardCard } from "./board-card";
 import NewBoardButton from "./new-board-button";
+import { getUser } from "@/lib/utils";
 
 interface BoardListProps {
   query: {
@@ -16,7 +17,8 @@ interface BoardListProps {
 }
 
 const BoardList = ({ query }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { ...query });
+  const userId = getUser() || "";
+  const data = useQuery(api.boards.get, { ...query, userId });
 
   if (data === undefined) {
     return (

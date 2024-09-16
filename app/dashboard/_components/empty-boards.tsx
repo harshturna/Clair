@@ -2,10 +2,10 @@
 
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { toast } from "sonner";
 import { Hash } from "lucide-react";
+import { getUser } from "@/lib/utils";
 
 export const EmptyBoards = () => {
   const { mutate, pending } = useApiMutation(api.board.create);
@@ -13,6 +13,7 @@ export const EmptyBoards = () => {
   const onClick = () => {
     mutate({
       title: "Untitled",
+      userId: getUser() || "",
     })
       .then((id) => {
         toast.success("Board created");

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { api } from "@/convex/_generated/api";
+import { getUser } from "@/lib/utils";
 
 export const RenameModal = () => {
   const { isOpen, onClose, initialValues } = useRenameModal();
@@ -30,7 +31,7 @@ export const RenameModal = () => {
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
-    mutate({ id: initialValues.id, title })
+    mutate({ id: initialValues.id, title, userId: getUser() || "" })
       .then(() => {
         toast.success("Board renamed");
         onClose();

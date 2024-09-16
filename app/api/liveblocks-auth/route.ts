@@ -1,7 +1,5 @@
 import { Liveblocks } from "@liveblocks/node";
 import { NextRequest } from "next/server";
-import { fetchQuery } from "convex/nextjs";
-import { api } from "@/convex/_generated/api";
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET!,
@@ -16,10 +14,9 @@ const names = [
 ];
 
 export async function POST(request: NextRequest) {
-  const user = await fetchQuery(api.user.getCurrentUser);
+  const userId = request.nextUrl.searchParams.get("user_id");
 
-  const userName =
-    user?.name || names[Math.floor(Math.random() * names.length)];
+  const userName = names[Math.floor(Math.random() * names.length)];
 
   const { room } = await request.json();
 
@@ -28,10 +25,9 @@ export async function POST(request: NextRequest) {
     picture: "",
   };
 
-  const session = liveblocks.prepareSession(
-    user?._id || `Guest_${Date.now()}`,
-    { userInfo }
-  );
+  const session = liveblocks.prepareSession(userId || `Guest_${Date.now()}`, {
+    userInfo,
+  });
 
   if (room) {
     session.allow(room, session.FULL_ACCESS);

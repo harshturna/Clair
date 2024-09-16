@@ -16,6 +16,7 @@ import { api } from "@/convex/_generated/api";
 import { ConfirmModal } from "./confirm-modal";
 import { Button } from "./ui/button";
 import { useRenameModal } from "@/store/use-rename-modal";
+import { getUser } from "@/lib/utils";
 
 interface ActionsProps {
   children: React.ReactNode;
@@ -36,7 +37,7 @@ export const Actions = ({
   const { mutate, pending } = useApiMutation(api.board.remove);
 
   const onDelete = () => {
-    mutate({ id })
+    mutate({ id, userId: getUser() || "" })
       .then(() => toast.success("Board deleted!"))
       .catch(() => toast.error("Failed to delete board"));
   };

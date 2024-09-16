@@ -34,7 +34,7 @@ const Sidebar = () => {
           size="lg"
           className="font-normal justify-start px-2 w-full"
         >
-          <Link href="/">
+          <Link href="/dashboard">
             <LayoutDashboard className="h-4 w-4 mr-2" />
             All boards
           </Link>
