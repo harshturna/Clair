@@ -1,10 +1,14 @@
 import { LucideIcon } from "lucide-react";
-import { ComponentType, SVGProps } from "react";
+import { ComponentType, ReactElement, SVGProps } from "react";
 import { Button } from "@/components/ui/button";
+import { WidgetSvgProps } from "@/types/widget-svg";
 
 interface WidgetToolButtonProps {
   label: string;
-  icon: LucideIcon | ComponentType<SVGProps<SVGSVGElement>>;
+  icon:
+    | LucideIcon
+    | ComponentType<SVGProps<SVGSVGElement>>
+    | ComponentType<WidgetSvgProps>;
   onClick: () => void;
   isActive?: boolean;
   isDisabled?: boolean;
