@@ -49,7 +49,7 @@ const HeroSection = () => {
           alt="hero image"
           width={800}
           height={800}
-          className="flex items-center justify-center mx-auto border border-slate-200 rounded-md w-[400px] sm:w-[500px] md:w-[700px] lg:w-[1000px]"
+          className="flex items-center justify-center mx-auto border border-slate-200 rounded-md w-[350px] sm:w-[500px] md:w-[700px] lg:w-[1000px]"
         />
       </div>
     </div>

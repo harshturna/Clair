@@ -52,6 +52,33 @@ const tabs = [
       },
     ],
   },
+  {
+    title: "Project planning",
+    description: (
+      <div className="md:mt-6">
+        Visualize project timelines, tasks, and dependencies using interactive
+        diagrams and icons.
+      </div>
+    ),
+  },
+  {
+    title: "Strategic Mapping",
+    description: (
+      <div className="md:mt-6">
+        Develop and refine business strategies using shared mind maps and
+        flowcharts.
+      </div>
+    ),
+  },
+  {
+    title: "Education",
+    description: (
+      <div className="md:mt-6">
+        Enhance online learning through interactive visual explanations and
+        group exercises.
+      </div>
+    ),
+  },
 ];
 
 const FeatureSection = () => {
@@ -82,12 +109,12 @@ const FeatureSection = () => {
                 index <= 2
                   ? "md:col-span-6 lg:col-span-4 bg-[#f6f5f4] p-6 rounded-xl flex"
                   : index <= 4
-                  ? "md:col-span-6 bg-[#f6f5f4] p-6 rounded-xl flex"
-                  : index === 5
-                  ? " md:col-span-6  lg:col-span-12  lg:row-span-3    bg-[#f6f5f4] p-6 rounded-xl "
-                  : index > 5
-                  ? "col-span-12 lg:col-span-4  md:col-span-4 bg-[#f6f5f4] p-6 rounded-xl flex-col "
-                  : "l"
+                    ? "md:col-span-6 bg-[#f6f5f4] p-6 rounded-xl flex"
+                    : index === 5
+                      ? " md:col-span-6  lg:col-span-8  lg:row-span-3    bg-[#f6f5f4] p-6 rounded-xl "
+                      : index > 5
+                        ? "col-span-12 lg:col-span-4  md:col-span-4 bg-[#f6f5f4] p-6 rounded-xl flex-col "
+                        : "l"
               }
             `}
             >
@@ -112,7 +139,7 @@ const FeatureSection = () => {
                     />
                   </div>
                 </div>
-              ) : (
+              ) : index === 5 ? (
                 <>
                   {tab.images && (
                     <div className="flex justify-center items-center flex-col ">
@@ -146,6 +173,15 @@ const FeatureSection = () => {
                     </div>
                   )}
                 </>
+              ) : (
+                index > 5 && (
+                  <>
+                    <div className="text-xl font-normal ">{tab.title}</div>
+                    <div className="text-sm font-normal mt-10 md:mt-0  pb-2">
+                      {tab.description}
+                    </div>
+                  </>
+                )
               )}
             </div>
           ))}

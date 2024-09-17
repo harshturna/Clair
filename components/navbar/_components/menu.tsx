@@ -20,40 +20,34 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-const components: { title: string; href: string; description: string }[] = [
+const components: { title: string; description: string }[] = [
   {
     title: "Brainstorming",
-    href: "/docs/primitives/alert-dialog",
     description:
       "Facilitate remote team ideation sessions with real-time visual collaboration.",
   },
   {
     title: "Project Planning",
-    href: "/docs/primitives/hover-card",
     description:
       "Visualize project timelines, tasks, and dependencies using interactive diagrams and icons.",
   },
   {
     title: "UX Design",
-    href: "/docs/primitives/progress",
     description:
       "Create and iterate on wireframes and user flows collaboratively with stakeholders.",
   },
   {
     title: "Education",
-    href: "/docs/primitives/scroll-area",
     description:
       "Enhance online learning through interactive visual explanations and group exercises.",
   },
   {
     title: "Strategic Mapping",
-    href: "/docs/primitives/tabs",
     description:
       "Develop and refine business strategies using shared mind maps and flowcharts.",
   },
   {
     title: "Remote Workshops",
-    href: "/docs/primitives/tooltip",
     description:
       "Conduct engaging virtual workshops with interactive visual aids and group activities.",
   },
@@ -116,11 +110,7 @@ export function Menu() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
+                <ListItem key={component.title} title={component.title}>
                   {component.description}
                 </ListItem>
               ))}
