@@ -5,7 +5,7 @@ import Link from "next/link";
 const GetStartedFree = () => {
   return (
     <>
-      <div className="py-20 xl:py-24 flex justify-center items-center flex-col border-b">
+      <div className="flex justify-center items-center flex-col border-b">
         <div className="text-4xl xl:text-5xl font-medium  text-center">
           Free forever
         </div>

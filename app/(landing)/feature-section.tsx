@@ -92,7 +92,7 @@ const FeatureSection = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center flex-col ">
+      <div className="pt-20 flex justify-center items-center flex-col ">
         <div className="text-3xl w-3/4 xl:text-5xl font-medium xl:w-1/2 text-center">
           Supercharge Your Collaboration
         </div>
