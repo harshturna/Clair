@@ -20,7 +20,7 @@ export function Room({
   fallback: NonNullable<ReactNode> | null;
 }) {
   const user = getUser();
-  console.log(user);
+
   return (
     <LiveblocksProvider
       authEndpoint={`/api/liveblocks-auth?user_id=${user}`}

@@ -4,25 +4,21 @@ import { getUser, setUser } from "@/lib/utils";
 import BoardList from "./_components/board-list";
 import { useSearchParams } from "next/navigation";
 
-interface DashboardPageProps {
-  searchParams: {
-    search?: string;
-    favorites?: string;
-  };
-}
-
 const user = getUser();
 if (!user) {
   setUser();
 }
 
-const DashboardPage = ({ searchParams }: DashboardPageProps) => {
-  const testSearchParams = useSearchParams();
-  console.log("SEARCH PARAMS FROM PROPS:", searchParams);
-  console.log("SEARCH PARAMS FROM HOOK", Object.fromEntries(testSearchParams));
+const DashboardPage = () => {
+  const searchParams = useSearchParams();
+
+  const structuredSearchParams = {
+    search: searchParams.get("search") || undefined,
+    favorites: searchParams.get("favorites") || undefined,
+  };
   return (
     <div className=" flex-1 h-[calc(100%-80px)] p-6">
-      <BoardList query={searchParams} />
+      <BoardList query={structuredSearchParams} />
     </div>
   );
 };
