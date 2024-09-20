@@ -1,6 +1,6 @@
 # Clair
 
-Clair is a powerful collaborative whiteboard application designed to enhance for individuals and team creativity, remote collaboration. With its intuitive interface and robust feature set, Clair empowers teams to visualize ideas, design user experiences, and conduct engaging virtual workshops effortlessly.
+Clair is a powerful collaborative whiteboard application designed to for individuals and team creativity. With its intuitive interface and robust feature set, Clair empowers teams to visualize ideas, design user experiences, and conduct engaging virtual workshops effortlessly.
 
 ## Supercharge Your Collaboration
 
