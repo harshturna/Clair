@@ -4,4 +4,6 @@ export interface WidgetSvgProps extends React.SVGProps<SVGSVGElement> {
   fill?: string;
   stroke?: string;
   strokeWidth?: number | string;
+  width?: number;
+  height?: number;
 }

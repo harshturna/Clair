@@ -1,87 +1,89 @@
-import {
-  AppWindow,
-  Calendar,
-  CircleUser,
-  ClipboardIcon,
-  Database,
-  File,
-  FolderClosed,
-  Image,
-  Laptop,
-  Mail,
-  Menu,
-  Monitor,
-  MousePointer,
-  Smartphone,
-  ToggleLeft,
-  ToggleRight,
-  Tv,
-  Wifi,
-  Youtube,
-} from "lucide-react";
-import Toast from "./toast";
-import Telephone from "./telephone";
-import { Browser } from "./browser";
+import MenuNav from "./menu-nav";
+import Calendar from "./calendar";
+import Server from "./server";
+import Wifi from "./wifi";
+import Router from "./router";
+import Database from "./database";
+import Terminal from "./terminal";
+import CursorClick from "./cursor-click";
+import ToggleOff from "./toggle-off";
+import ToggleOn from "./toggle-on";
+import Password from "./password";
+import AppWindowBookmark from "./app-window-bookmark";
+import AppWindowLayout from "./app-window-layout";
+import Notes from "./notes";
+import Delete from "./delete";
+import CheckBox from "./check-box";
+import CrossBox from "./cross-box";
+import Browser from "./browser";
+import BrowserSlider from "./browser-slider";
+import DropdownOpen from "./dropdown-open";
+import DropdownClose from "./dropdown-close";
+import Mobile from "./mobile";
+import AppWindow from "./app-window";
+import Home from "./home";
+import SoundControl from "./sound-control";
+import Box from "./box";
 
 export const widgets = [
   {
-    element: MousePointer,
-    name: "Mouse Pointer",
-    strokeOverflow: true,
-  },
-  {
-    element: ToggleRight,
-    name: "Switch Right",
+    element: ToggleOff,
+    name: "Toggle Off",
     strokeOverflow: false,
   },
   {
-    element: ToggleLeft,
-    name: "Switch Left",
+    element: ToggleOn,
+    name: "Toggle On",
     strokeOverflow: false,
   },
   {
-    element: Toast,
-    name: "Toast",
+    element: BrowserSlider,
+    name: "Browser Slider",
     strokeOverflow: false,
   },
   {
-    element: File,
-    name: "Document",
+    element: DropdownClose,
+    name: "Dropdown Close",
     strokeOverflow: false,
   },
   {
-    element: FolderClosed,
-    name: "Folder",
+    element: DropdownOpen,
+    name: "Dropdown Open",
     strokeOverflow: false,
   },
   {
-    element: Mail,
-    name: "Email",
+    element: CheckBox,
+    name: "Check box",
     strokeOverflow: false,
   },
   {
-    element: CircleUser,
-    name: "User",
+    element: CrossBox,
+    name: "Cross box",
     strokeOverflow: false,
   },
   {
-    element: Wifi,
-    name: "Wifi",
+    element: MenuNav,
+    name: "Menu",
     strokeOverflow: false,
   },
   {
-    element: AppWindow,
-    name: "App Window",
+    element: SoundControl,
+    name: "Sound Control",
     strokeOverflow: false,
   },
   {
-    element: Image,
-    name: "Image",
+    element: CursorClick,
+    name: "Cursor Click",
     strokeOverflow: false,
   },
   {
-    element: Youtube,
-    name: "Video",
+    element: Mobile,
+    name: "Mobile",
+    strokeOverflow: false,
+  },
+  {
+    element: Box,
+    name: "Box",
     strokeOverflow: false,
   },
   {
@@ -90,43 +92,63 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: AppWindow,
+    name: "App Window",
+    strokeOverflow: false,
+  },
+  {
+    element: Terminal,
+    name: "Terminal",
+    strokeOverflow: false,
+  },
+  {
+    element: AppWindowLayout,
+    name: "Apps Window",
+    strokeOverflow: false,
+  },
+  {
+    element: AppWindowBookmark,
+    name: "Bookmark Window",
+    strokeOverflow: false,
+  },
+  {
+    element: Home,
+    name: "Home",
+    strokeOverflow: false,
+  },
+  {
+    element: Notes,
+    name: "Note",
+    strokeOverflow: false,
+  },
+  {
+    element: Delete,
+    name: "Delete",
+    strokeOverflow: false,
+  },
+  {
+    element: Password,
+    name: "Password",
+    strokeOverflow: false,
+  },
+  {
+    element: Server,
+    name: "Server",
+    strokeOverflow: false,
+  },
+  {
+    element: Router,
+    name: "Router",
+    strokeOverflow: false,
+  },
+  {
+    element: Wifi,
+    name: "Wifi",
+    strokeOverflow: false,
+  },
+  {
     element: Database,
     name: "Database",
-    strokeOverflow: false,
-  },
-  {
-    element: ClipboardIcon,
-    name: "Clipboard",
-    strokeOverflow: false,
-  },
-  {
-    element: Menu,
-    name: "Menu",
-    strokeOverflow: false,
-  },
-  {
-    element: Smartphone,
-    name: "Smartphone",
-    strokeOverflow: false,
-  },
-  {
-    element: Telephone,
-    name: "Telephone",
-    strokeOverflow: false,
-  },
-  {
-    element: Laptop,
-    name: "Laptop",
-    strokeOverflow: false,
-  },
-  {
-    element: Tv,
-    name: "TV",
-    strokeOverflow: false,
-  },
-  {
-    element: Monitor,
-    name: "Monitor",
     strokeOverflow: false,
   },
   {
