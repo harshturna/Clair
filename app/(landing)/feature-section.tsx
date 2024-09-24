@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 
 const tabs = [
   {
-    text: "20+",
+    text: "50+",
     subtext: "Prebuilt elements",
   },
   {
