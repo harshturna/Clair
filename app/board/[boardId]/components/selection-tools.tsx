@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelectionBounds } from "@/hooks/use-selection-bounds";
-import { Camera, Color } from "@/types/canvas";
+import { Camera, CanvasMode, CanvasState, Color } from "@/types/canvas";
 import { useMutation, useSelf } from "@liveblocks/react";
 import { memo } from "react";
 import { ColorPicker } from "./color-picker";
@@ -13,10 +13,11 @@ import { BringToFront, SendToBack, Trash } from "lucide-react";
 interface SelectionToolsProps {
   camera: Camera;
   setLastUserColor: (color: Color) => void;
+  canvasState: CanvasState;
 }
 
 export const SelectionTools = memo(
-  ({ camera, setLastUserColor }: SelectionToolsProps) => {
+  ({ camera, setLastUserColor, canvasState }: SelectionToolsProps) => {
     const selection = useSelf((me) => me.presence.selection);
     const selectionBounds = useSelectionBounds();
     const deleteLayers = useDeleteLayers();

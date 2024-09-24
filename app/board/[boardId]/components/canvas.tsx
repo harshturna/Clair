@@ -469,7 +469,11 @@ const Canvas = ({ boardId }: CanvasProps) => {
         <Participants />
       </div>
       <SideToolbar canvasState={canvasState} setCanvasState={setCanvasState} />
-      <SelectionTools camera={camera} setLastUserColor={setLastUserColor} />
+      <SelectionTools
+        camera={camera}
+        setLastUserColor={setLastUserColor}
+        canvasState={canvasState}
+      />
       <svg
         className="h-screen w-screen"
         onWheel={onWheel}

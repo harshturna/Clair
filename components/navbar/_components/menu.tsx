@@ -61,7 +61,7 @@ export function Menu() {
           <NavigationMenuTrigger>Features</NavigationMenuTrigger>
           <NavigationMenuContent className="cursor-default">
             <div className="flex cursor-default">
-              <ul className="grid  p-2 md:w-[400px]  lg:w-[400px] hover:cursor-pointer border-r cursor-default">
+              <ul className="grid  p-4 md:w-[500px]  lg:w-[500px] hover:cursor-pointer border-r cursor-default">
                 <div className="flex items-center gap-3 hover:bg-gray-400/10 p-1 rounded-sm mb-2 cursor-default">
                   <Presentation className="w-8 h-8 mr-2 text-red-600" />
                   <div>

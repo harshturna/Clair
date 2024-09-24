@@ -34,6 +34,24 @@ import Images from "./images";
 import BrowserContent from "./browser-content";
 import ShoppingCart from "./shopping-cart";
 import Stepper from "./stepper";
+import ModuleBoxes from "./module-boxes";
+import JsFile from "./js-file";
+import CssFile from "./css-file";
+import HTMLFile from "./html-file";
+import BulletsList from "./bullets-list";
+import NumbersList from "./numbers-list";
+import Hash from "./hash";
+import Api from "./api";
+import List from "./list";
+import Image from "./image";
+import SearchBar from "./search-bar";
+import Microprocessor from "./microprocessor";
+import Container from "./container";
+import Cloud from "./cloud";
+import Music from "./music";
+import Folder from "./folder";
+import Email from "./email";
+import InputField from "./input-field";
 
 export const widgets = [
   {
@@ -82,6 +100,21 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: List,
+    name: "List",
+    strokeOverflow: false,
+  },
+  {
+    element: InputField,
+    name: "Input Field",
+    strokeOverflow: false,
+  },
+  {
+    element: SearchBar,
+    name: "Search Bar",
+    strokeOverflow: false,
+  },
+  {
     element: SoundControl,
     name: "Sound Control",
     strokeOverflow: false,
@@ -89,6 +122,11 @@ export const widgets = [
   {
     element: CursorClick,
     name: "Cursor Click",
+    strokeOverflow: false,
+  },
+  {
+    element: Api,
+    name: "Api",
     strokeOverflow: false,
   },
   {
@@ -142,6 +180,11 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: Image,
+    name: "Image",
+    strokeOverflow: false,
+  },
+  {
     element: Images,
     name: "Images",
     strokeOverflow: false,
@@ -149,6 +192,16 @@ export const widgets = [
   {
     element: VideoPlayer,
     name: "Video Player",
+    strokeOverflow: false,
+  },
+  {
+    element: Music,
+    name: "Music",
+    strokeOverflow: false,
+  },
+  {
+    element: Email,
+    name: "Email",
     strokeOverflow: false,
   },
   {
@@ -177,8 +230,38 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: HTMLFile,
+    name: "HTML file",
+    strokeOverflow: false,
+  },
+  {
+    element: JsFile,
+    name: "Javascript file",
+    strokeOverflow: false,
+  },
+  {
+    element: CssFile,
+    name: "CSS file",
+    strokeOverflow: false,
+  },
+  {
+    element: Folder,
+    name: "Folder",
+    strokeOverflow: false,
+  },
+  {
+    element: Hash,
+    name: "Hash",
+    strokeOverflow: false,
+  },
+  {
     element: DashboardLayout,
     name: "Dashboard Layout",
+    strokeOverflow: false,
+  },
+  {
+    element: Cloud,
+    name: "Cloud",
     strokeOverflow: false,
   },
   {
@@ -214,6 +297,31 @@ export const widgets = [
   {
     element: ShoppingCart,
     name: "Shopping Cart",
+    strokeOverflow: false,
+  },
+  {
+    element: Container,
+    name: "Container",
+    strokeOverflow: false,
+  },
+  {
+    element: ModuleBoxes,
+    name: "Module Boxes",
+    strokeOverflow: false,
+  },
+  {
+    element: BulletsList,
+    name: "Bullets List",
+    strokeOverflow: false,
+  },
+  {
+    element: NumbersList,
+    name: "Numbers List",
+    strokeOverflow: false,
+  },
+  {
+    element: Microprocessor,
+    name: "Microprocessor",
     strokeOverflow: false,
   },
 ];

@@ -32,7 +32,7 @@ const HeroSection = () => {
 
       <div className="flex gap-4 pt-6 items-center justify-center">
         <Link href="/dashboard">
-          <button className="px-6 py-3 md:px-10 border border-gray-400/90 rounded-md border-dashed text-sky-500 bg-gray-50">
+          <button className="px-6 py-3 md:px-10 border border-gray-300 rounded-md border-dashed text-sky-500 bg-gray-50">
             <div className="flex items-center justify-center gap-1">
               <div className="text-xs sm:text-sm md:text-md">Try Clair</div>
               <div>
