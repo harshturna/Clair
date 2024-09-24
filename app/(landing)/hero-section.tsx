@@ -32,14 +32,14 @@ const HeroSection = () => {
 
       <div className="flex gap-4 pt-6 items-center justify-center">
         <Link href="/dashboard">
-          <Button className="py-3 px-6 md:py-4 md:px-10">
+          <button className="px-6 py-3 md:px-10 border border-gray-400/90 rounded-md border-dashed text-sky-500 bg-gray-50">
             <div className="flex items-center justify-center gap-1">
               <div className="text-xs sm:text-sm md:text-md">Try Clair</div>
               <div>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
-          </Button>
+          </button>
         </Link>
       </div>
 
@@ -49,7 +49,7 @@ const HeroSection = () => {
           alt="hero image"
           width={800}
           height={800}
-          className="flex items-center justify-center mx-auto border border-slate-200 rounded-md w-[350px] sm:w-[500px] md:w-[700px] lg:w-[1000px]"
+          className="flex items-center justify-center mx-auto border border-dashed border-slate-200 rounded-md w-[350px] sm:w-[500px] md:w-[700px] lg:w-[1000px]"
         />
       </div>
     </div>
