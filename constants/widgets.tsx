@@ -24,6 +24,16 @@ import AppWindow from "./app-window";
 import Home from "./home";
 import SoundControl from "./sound-control";
 import Box from "./box";
+import ControlSlider from "./control-slider";
+import DashboardLayout from "./dashboard-layout";
+import CodeFile from "./code-file";
+import VideoPlayer from "./video-player";
+import Chat from "./chat";
+import AtSymbol from "./at-symbol";
+import Images from "./images";
+import BrowserContent from "./browser-content";
+import ShoppingCart from "./shopping-cart";
+import Stepper from "./stepper";
 
 export const widgets = [
   {
@@ -62,6 +72,11 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: Stepper,
+    name: "Stepper",
+    strokeOverflow: false,
+  },
+  {
     element: MenuNav,
     name: "Menu",
     strokeOverflow: false,
@@ -89,6 +104,11 @@ export const widgets = [
   {
     element: Browser,
     name: "Browser",
+    strokeOverflow: false,
+  },
+  {
+    element: BrowserContent,
+    name: "Browser Content",
     strokeOverflow: false,
   },
   {
@@ -122,6 +142,26 @@ export const widgets = [
     strokeOverflow: false,
   },
   {
+    element: Images,
+    name: "Images",
+    strokeOverflow: false,
+  },
+  {
+    element: VideoPlayer,
+    name: "Video Player",
+    strokeOverflow: false,
+  },
+  {
+    element: Chat,
+    name: "Chat",
+    strokeOverflow: false,
+  },
+  {
+    element: AtSymbol,
+    name: "At Symbol",
+    strokeOverflow: false,
+  },
+  {
     element: Delete,
     name: "Delete",
     strokeOverflow: false,
@@ -129,6 +169,16 @@ export const widgets = [
   {
     element: Password,
     name: "Password",
+    strokeOverflow: false,
+  },
+  {
+    element: CodeFile,
+    name: "Code file",
+    strokeOverflow: false,
+  },
+  {
+    element: DashboardLayout,
+    name: "Dashboard Layout",
     strokeOverflow: false,
   },
   {
@@ -154,6 +204,16 @@ export const widgets = [
   {
     element: Calendar,
     name: "Calendar",
+    strokeOverflow: false,
+  },
+  {
+    element: ControlSlider,
+    name: "Control Slider",
+    strokeOverflow: false,
+  },
+  {
+    element: ShoppingCart,
+    name: "Shopping Cart",
     strokeOverflow: false,
   },
 ];

@@ -15,6 +15,7 @@ const ToggleOn: React.FC<WidgetSvgProps> = ({
     viewBox="0 0 24 24"
     height={height}
     width={width}
+    {...props}
   >
     <path
       fill={fill}
