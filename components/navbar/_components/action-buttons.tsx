@@ -26,7 +26,7 @@ const ActionButtons = () => {
         <div className="flex lg:space-x-4 items-center pr-4">
           <Link href={"/dashboard"}>
             <Button className="hidden lg:block" variant="ghost">
-              View Dashboard
+              Try Clair
             </Button>
           </Link>
         </div>
