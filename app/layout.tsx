@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ModalProvider } from "@/providers/modal-providers";
 import { Loading } from "@/components/auth/loading";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             <Toaster />
             <ModalProvider />
             {children}
+            <Analytics />
           </ConvexClientProvider>
         </Suspense>
       </body>
